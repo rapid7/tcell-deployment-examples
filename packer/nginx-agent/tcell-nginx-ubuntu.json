@@ -1,0 +1,64 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-west-1",
+    "source_ami_filter": {
+      "filters": {
+      "virtualization-type": "hvm",
+      "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+      "root-device-type": "ebs"
+      },
+      "owners": ["099720109477"],
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "tcell-nginx-{{timestamp}}"
+  }],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["sudo apt-get update -y",
+                 "sudo apt-get upgrade -y",
+                 "sudo apt-get -q install ntp supervisor python wget -y"]
+    },
+    {
+      "type": "shell",
+      "inline": ["sudo apt-get install nginx -y"]
+    },
+    {
+      "type": "shell",
+      "inline":["cd /tmp",
+                "wget https://static.tcell.io/downloads/nginxagent/nginx_tcellagent-1.0.4-agentonly-linux-x86_64.tar.xz"]
+    },
+    {
+      "type": "shell",
+      "inline":["cd /tmp",
+                    "tar xvf nginx_tcellagent-1.0.4-agentonly-linux-x86_64.tar.xz",
+                    "sudo mkdir /usr/share/nginx/modules",
+                    "sudo cp -rp nginx_tcellagent-*-agentonly-linux-x86_64/ubuntu/trusty/nginx-1.10.3/* /usr/share/nginx/modules"]
+    },
+    {
+      "type": "file",
+      "source": "tcell_agent.config",
+      "destination": "/tmp/tcell_agent.config"
+    },
+    {
+      "type": "shell",
+      "inline":["sudo cp /tmp/tcell_agent.config /etc/nginx"]
+    },
+    {
+      "type": "file",
+      "source": "nginx.conf",
+      "destination": "/tmp/nginx.conf"
+    },
+    {
+      "type": "shell",
+      "inline":["sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.original",
+                "sudo cp /tmp/nginx.conf /etc/nginx"]
+    }
+  ]
+}
