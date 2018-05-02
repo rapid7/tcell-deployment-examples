@@ -32,12 +32,12 @@
     {
       "type": "shell",
       "inline":["cd /tmp",
-                "wget https://static.tcell.io/downloads/nginxagent/nginx_tcellagent-1.0.4-agentonly-linux-x86_64.tar.xz"]
+                "wget https://static.tcell.io/downloads/nginxagent/nginx_tcellagent-1.0.6-agentonly-linux-x86_64.tar.xz"]
     },
     {
       "type": "shell",
       "inline":["cd /tmp",
-                    "tar xvf nginx_tcellagent-1.0.4-agentonly-linux-x86_64.tar.xz",
+                    "tar xvf nginx_tcellagent-1.0.6-agentonly-linux-x86_64.tar.xz",
                     "sudo mkdir /usr/share/nginx/modules",
                     "sudo cp -rp nginx_tcellagent-*-agentonly-linux-x86_64/ubuntu/trusty/nginx-1.10.3/* /usr/share/nginx/modules"]
     },
