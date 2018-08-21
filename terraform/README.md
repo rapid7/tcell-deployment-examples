@@ -33,6 +33,17 @@ resource "tcell_features" "stage-features" {
   <feature> = <value>
 }
 ```
+Currently available features, first listed value is the default. All features in the resource are optional to specify:
+* `csp`: `"Report Only"|"Block"|"Disabled"`
+* `appfirewall`: `true|false`
+* `clickjacking`: `"Report Only"|"Block"|"Disabled"`
+* `httpredirect`: `"Report Only"|"Block"|"Disabled"`
+* `cmdi`: `"Report Only"|"Block"|"Disabled"`
+* `blockingrules`: `"Report Only"|"Block"|"Disabled"`
+* `jsconfig`: `true|false`
+* `dataexposure`: `true|false`
+* `login`: `true|false`
+* `canaries`: `true|false`
 #### `tcell_config`
 To set specific config values or set whole config
 ```hcl
