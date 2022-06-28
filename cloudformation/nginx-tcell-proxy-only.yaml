@@ -19,7 +19,7 @@ Parameters:
     Type: String
     MinLength: 1
     MaxLength: 253
-    AllowedPattern: ^(http)(s?)://([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$
+    AllowedPattern: ^(http)(s?):\/\/[a-z0-9\.\-\:]*
     ConstraintDescription: Must be a valid URL, beginning with http:// or https://
   ApiKey:
     Type: String
