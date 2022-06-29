@@ -1,6 +1,6 @@
 ### Overview
 
-This folder contains an example CloudFormation template that can be used to launch the tCell nginx agent.
+This folder contains an example CloudFormation template that can be used to launch the tCell AMI agent. Additional documentation is available on https://docs.rapid7.com/tcell/deploy-ami-agent.
 
 The included example demonstrates how to launch and configure the agent for use as a reverse proxy. For production deployments we recommend using the AMI as a reference example or as the basis for your own image. tCell agents are flexible and support a number of other deployments. See https://docs.rapid7.com/tcell/ for more information.
 
