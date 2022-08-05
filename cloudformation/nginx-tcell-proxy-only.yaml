@@ -46,7 +46,7 @@ Resources:
       InstanceType: !Ref InstanceTypeParameter
       SecurityGroups: [!Ref 'SshSecGroup', !Ref 'ExternalHttpSecGroup' ]
       KeyName: !Ref 'KeyName'
-      ImageId: ami-030266009481b952c
+      ImageId: ami-086cbc0cb6e9e91e5
       UserData:
               Fn::Base64:
                 !Sub |
