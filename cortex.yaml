@@ -1,0 +1,14 @@
+---
+info:
+  title: Tcell Deployment Examples
+  x-cortex-git:
+    github:
+      alias: r7org
+      repository: rapid7/tcell-deployment-examples
+  x-cortex-tag: tcell-deployment-examples
+  x-cortex-type: service
+  x-cortex-domain-parents:
+  - tag: tcell-general
+openapi: 3.0.1
+servers:
+- url: "/"
